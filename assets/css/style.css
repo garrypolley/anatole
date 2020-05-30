@@ -1,16 +1,43 @@
 @charset "UTF-8";
+:root{
+  --bg-color:#fff;
+  --secondary-bg-color:#eeeeee;
+  --heading-color: #5f5f5f;
+  --body-color: rgba(0, 0, 0, 0.7);
+  --post-color: rgba(0, 0, 0, 0.44);
+  --border-color: rgba(0, 0, 0, 0.15);
+  --pre-bg-color: #f9f9fd;
+  --nav-text-color:#5a5a5a;
+  --tag-color: #424242;
+  scroll-padding-top: 100px;
+}
+
+html[data-theme='dark'] {
+  --bg-color:#292a2d;
+  --secondary-bg-color:rgb(119, 119, 122);
+  --heading-color: rgb(169,169,179);
+  --body-color:rgb(169,169,179);
+  --post-color: rgba(0, 0, 0, 0.44);
+  --border-color: rgb(38, 38, 38);
+  --pre-bg-color:rgb(33,33,45);
+  --nav-text-color:rgb(191, 191, 191);
+  --tag-color: rgb(191, 191, 191);
+  
+}
+
 html {
-  background-color: #fff;
+  background-color: var(--bg-color);
   -webkit-font-smoothing: antialiased;
+  
 }
 
 body {
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--body-color);
   font-family: 'Verdana', sans-serif;
   font-size: 15px;
   width: 100%;
   margin: 0 auto 30px auto;
-  background-color: #fff;
+  background-color: var(--bg-color);
 }
 
 p {
@@ -23,12 +50,13 @@ a {
   text-decoration: none;
 }
 
+
 .category {
   padding: 4px 6px;
   border-radius: 3px;
-  color: #fff;
-  background-color: #f9f9fd;
-  border: 1px solid #f2f2f2;
+  color: #000 !important;
+  background-color: var(--secondary-bg-color);
+  border: 1px solid var(--border-color);
 }
 
 .tag::before {
@@ -44,7 +72,7 @@ a {
 }
 
 pre {
-  background-color: #f9f9fd;
+  background-color: var(--pre-bg-color);
   padding: 5px;
   display: block;
   overflow-x: auto;
@@ -57,26 +85,18 @@ pre {
 
 a:link, a:visited {
   opacity: 1;
-  -webkit-transition: all .15s linear;
-  -moz-transition: all .15s linear;
-  -o-transition: all .15s linear;
-  -ms-transition: all .15s linear;
-  transition: all .15s linear;
-  color: #424242;
+  color: var(--tag-color);
 }
 
 a:hover, a:active {
-  color: #4786D6;
+  color: #2660ab;
 }
 
 /*basic styles ends*/
 /*animation starts*/
+
 .animated {
-  -webkit-animation-fill-mode: both;
-  -moz-animation-fill-mode: both;
-  -ms-animation-fill-mode: both;
-  -o-animation-fill-mode: both;
-  animation-fill-mode: both;
+  transition: top .8s linear;
   -webkit-animation-duration: 1s;
   -moz-animation-duration: 1s;
   -ms-animation-duration: 1s;
@@ -94,44 +114,37 @@ a:hover, a:active {
 
 @-webkit-keyframes fadeInDown {
   0% {
-    opacity: 0;
     -webkit-transform: translateY(-20px);
   }
   100% {
-    opacity: 1;
     -webkit-transform: translateY(0);
   }
 }
 @-moz-keyframes fadeInDown {
   0% {
-    opacity: 0;
     -moz-transform: translateY(-20px);
   }
   100% {
-    opacity: 1;
     -moz-transform: translateY(0);
   }
 }
 @-o-keyframes fadeInDown {
   0% {
-    opacity: 0;
     -o-transform: translateY(-20px);
   }
   100% {
-    opacity: 1;
     -o-transform: translateY(0);
   }
 }
 @keyframes fadeInDown {
   0% {
-    opacity: 0;
     transform: translateY(-20px);
   }
   100% {
-    opacity: 1;
     transform: translateY(0);
   }
 }
+
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   -moz-animation-name: fadeInDown;
@@ -152,13 +165,13 @@ a:hover, a:active {
   position: fixed;
   right: 0;
   z-index: 3;
-  background-color: #fff;
+  background-color: var(--bg-color);
   height: 60px;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid var(--border-color);
 }
 .page-top .nav {
   list-style: none;
-  padding: 18px 30px;
+  padding: 11px 30px;
   float: left;
   font-size: 12px;
 }
@@ -168,15 +181,21 @@ a:hover, a:active {
   padding-right: 20px;
 }
 .page-top .nav a {
-  color: #5A5A5A;
+  color: var(--nav-text-color);
 }
 .page-top .nav a:hover {
-  color: #4786D6;
+  color: #2660ab;
 }
 .page-top .nav a.current {
-  color: #5A5A5A;
+  color: var(--nav-text-color);
   padding-bottom: 22px;
-  border-bottom: 1px solid #5A5A5A;
+  border-bottom: 1px solid var(--nav-text-color);
+}
+.page-top .themeswitcher {
+  list-style: none;
+  padding: 15px 30px;
+  float: right;
+  font-size: 1.6em;
 }
 .page-top .information {
   float: right;
@@ -205,14 +224,13 @@ a:hover, a:active {
   width: 40%;
   -webkit-background-size: cover;
   background-size: cover;
-  background-color: #fff;
+  background-color: var(--bg-color);
   height: 100%;
-  transition: 0.8s;
   top: 0;
   left: 0;
   position: fixed;
   z-index: 4;
-  border-right: 1px solid #f2f2f2;
+  border-right: 1px solid var(--border-color);
 }
 .sidebar .logo-title {
   text-align: center;
@@ -220,10 +238,13 @@ a:hover, a:active {
 }
 .sidebar .logo-title .description {
   font-size: 14px;
-  color: #565654;
 }
 .sidebar .logo-title .logo {
   margin: 0 auto;
+}
+.sidebar .logo-title .title img {
+  width: 127px;
+  border-radius: 50%;
 }
 .sidebar .logo-title .title h3 {
   text-transform: uppercase;
@@ -235,7 +256,7 @@ a:hover, a:active {
 }
 .sidebar .logo-title .title a {
   text-decoration: none;
-  color: #464646;
+  color: var(--heading-color);
   font-size: 2rem;
   font-weight: bold;
 }
@@ -254,14 +275,14 @@ a:hover, a:active {
   line-height: 0;
 }
 .sidebar .social-links a {
-  color: #565654;
+  color: var(--heading-color);
 }
 .sidebar .social-links a:hover {
-  color: #4786D6;
+  color: #2660ab;
 }
 
 .post {
-  background-color: #FFF;
+  background-color: var(--bg-color);
   margin: 30px;
 }
 .post .post-title h1 {
@@ -276,21 +297,22 @@ a:hover, a:active {
   font-size: 28px;
   line-height: 1;
   font-weight: 600;
-  color: #5f5f5f;
+  color: var(--heading-color);
 }
 .post .post-title h3 {
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1;
   font-weight: 600;
-  color: #464646;
+  /* color: #464646; */
+  color: var(--heading-color);
   font-size: 22px;
   margin: 0;
 }
 .post .post-title a {
   text-decoration: none;
   letter-spacing: 1px;
-  color: #5f5f5f;
+  color: var(--heading-color);
 }
 .post .post-title a:hover {
   text-decoration: underline;
@@ -298,36 +320,36 @@ a:hover, a:active {
 .post .post-content a {
   text-decoration: none;
   letter-spacing: 1px;
-  color: #4786D6;
+  color: #2660ab;
 }
 .post .post-content a:hover {
   color: #2F69B3;
 }
 .post .post-content h3 {
-  color: #5F5F5F;
   font-size: 22px;
   font-weight: 600;
 }
 .post .post-content h4 {
-  color: #5F5F5F;
+  /* color: var(--heading-color); */
   font-size: 16px;
 }
 .post .post-content img {
   max-width: 100%;
 }
 .post .post-footer {
-  padding: 0 0 30px 0;
-  border-bottom: 1px solid #f2f2f2;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid var(--border-color);
 }
 .post .post-footer .meta {
   max-width: 100%;
-  height: 25px;
+  display: flex;
   color: #bbbbbb;
 }
 .post .post-footer .meta .info {
   float: left;
   font-size: 12px;
   margin-bottom: 1em;
+  color: var(--body-color);
 }
 .post .post-footer .info .separator a {
   margin-right: 0.2em;
@@ -340,11 +362,11 @@ a:hover, a:active {
 }
 .post .post-footer .meta a {
   text-decoration: none;
-  color: #bbbbbb;
+  color: var(--body-color);
   padding-right: 10px;
 }
 .post .post-footer .meta a:hover {
-  color: #4786D6;
+  color: #2660ab;
 }
 .post .post-footer .meta i {
   margin-right: 6px;
@@ -367,7 +389,7 @@ a:hover, a:active {
 }
 .post .post-footer .tags a {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.44);
+  color: var(--post-color);
   font-weight: 400;
 }
 .post .post-footer .tags a:hover {
@@ -377,7 +399,7 @@ a:hover, a:active {
 .pagination {
   margin: 30px;
   padding: 0px 0 56px 0;
-  border-bottom: 1px solid #f2f2f2;
+  text-align: center;
 }
 .pagination ul {
   list-style: none;
@@ -392,6 +414,7 @@ a:hover, a:active {
 }
 .pagination ul li a {
   text-decoration: none;
+  color: var(--body-color);
 }
 .pagination .pre {
   float: left;
@@ -422,7 +445,7 @@ a:hover, a:active {
 
 #disqus_thread {
   margin: 30px;
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .footer {
@@ -434,13 +457,12 @@ a:hover, a:active {
   position: absolute;
   width: 100%;
   padding-bottom: 20px;
-  background: #fff;
 }
 .footer a {
   color: #A6A6A6;
 }
 .footer a:hover {
-  color: #4786D6;
+  color: #2660ab;
 }
 
 /*for archive*/
@@ -477,7 +499,7 @@ a:hover, a:active {
   color: #8F8F8F;
 }
 .list-with-title .listing .listing-post a:hover {
-  color: #4786D6;
+  color: #2660ab;
 }
 
 /* share */
@@ -587,13 +609,13 @@ a.btn {
   display: inline-block;
   position: relative;
   outline: 0;
-  color: rgba(0, 0, 0, 0.44);
+  color: var(--post-color);
   background: transparent;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
   white-space: nowrap;
   font-weight: 400;
   font-style: normal;
@@ -653,13 +675,13 @@ a.btn {
   position: relative;
   padding: 0.5em 1.25em;
   outline: 0;
-  color: rgba(0, 0, 0, 0.44);
+  color: var(--post-color);
   background: transparent;
   font-size: 14px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-color);
   white-space: nowrap;
   font-weight: 400;
   font-style: normal;
@@ -736,4 +758,49 @@ a.btn {
   .share {
     display: grid;
   }
+}
+
+
+/* Medium zoom */
+.medium-zoom-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 300ms;
+  will-change: opacity;
+  background: var(--bg-color);
+}
+
+.medium-zoom--opened .medium-zoom-overlay {
+  cursor: pointer;
+  cursor: zoom-out;
+  opacity: 1;
+}
+
+.medium-zoom-image {
+  cursor: pointer;
+  cursor: zoom-in;
+  /*
+    The `transition` is marked as "!important" for the animation to happen
+    even though it's overriden by another inline `transition` style attribute.
+    This is problematic with frameworks that generate inline styles on their
+    images (e.g. Gatsby).
+    See https://github.com/francoischalifour/medium-zoom/issues/110
+   */
+  transition: transform 300ms cubic-bezier(0.2, 0, 0.2, 1) !important;
+  z-index: 100;
+}
+
+.medium-zoom-image--hidden {
+  visibility: hidden;
+}
+
+.medium-zoom-image--opened {
+  position: relative;
+  cursor: pointer;
+  cursor: zoom-out;
+  will-change: transform;
 }

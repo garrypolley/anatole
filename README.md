@@ -3,19 +3,27 @@
 Anatole is a beautiful minimalist two-column [hugo](https://gohugo.io/) theme based on farbox-theme-Anatole.
 
 ![Screenshot Anatole Theme](https://raw.githubusercontent.com/lxndrblz/anatole/master/images/screenshot.png)
+![Screenshot Anatole Theme (dark)](https://raw.githubusercontent.com/lxndrblz/anatole/master/images/screenshot_dark.png)
 
 ## Features
 Anatole's aims to be minimalistic and sleek, but still brings some great functionality.
 
-Features include:
-* Profile picture and slogan
-* Navigation items
-* Google Analytics
-* Comments powered by Disqus
-* Katex support
-* MIT License
-* Fontawesome icons
-* Custom CSS
+### Features include:
+
+- Profile picture and slogan
+- Dark mode
+- Navigation items
+- Pagination
+- 100⁄100 Google Lighthouse score
+- Google Analytics (optional)
+- Comments powered by Disqus (optional)
+- Katex support (optional)
+- MIT License
+- Fontawesome icons
+- Custom CSS (optional)
+- Medium like zoom for images
+- Compliant to strict CSP
+- Uses Hugo pipes to process assets
 
 ## Preview the exampleSite
 ```
@@ -62,13 +70,17 @@ Non-content entries can be added right from the `config.toml` file.
   weight = 200
   identifier = "posts"
   url = "/post/"
+
+  [[menu.main]]
+  name = "About"
+  weight = 300
+  identifier = "about"
+  url = "/about/"
 ```
-If you want to add content to menus, please see the `about.md` file as an example.
-```
-menu: main
-name: "About"
-weight: 300
-```
+### :100: Google Lighthouse score
+The theme is optimized to adhere to the requirements checked for in the Lighthouse Audit. On my [personal site](https://www.alexbilz.com) I was able to reach a perfect 100⁄100 score.
+![Google Lighthouse Score](https://raw.githubusercontent.com/lxndrblz/anatole/master/images/lighthouse.png)
+
 ### Comments powered by Disqus
 No comment section is shown on the `single.html`, unless a disqus code is specified in the `config.toml` file.
 ```toml
@@ -95,6 +107,39 @@ You can add your custom CSS files with the `customCss` parameter of the configur
 customCss = ["css/custom1.css", "css/custom2.css"]
 ```
 
+### Content Security Policy
+The theme is compliant with most strict CSP policies out of the box. A sample CSP for an Anatole-based site would look something like this:
+
+```
+Content-Security-Policy "
+  base-uri 'self';
+  connect-src 'self';
+  default-src 'self';
+  frame-ancestors 'none';
+  font-src 'self' stackpath.bootstrapcdn.com;
+  img-src 'self';
+  object-src 'none';
+  script-src 'self';
+  style-src 'self' stackpath.bootstrapcdn.com;
+"
+```
+If you want to configure the security headers for a site running on Netlify, you want to make sure you create a special `_headers` file in your sites static folder. The content might look like the following:
+```
+/*
+  X-Frame-Options: DENY
+  X-Clacks-Overhead: "GNU Terry Pratchett"
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-origin
+  Content-Security-Policy:  base-uri 'self'; connect-src 'self'; default-src 'self'; frame-ancestors 'none'; font-src 'self' stackpath.bootstrapcdn.com; img-src 'self'; object-src 'none'; script-src 'self'; style-src 'self' stackpath.bootstrapcdn.com;
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+```
+### Configurable pagination section
+You can configure the pages shown on the front page by altering the `mainSections` parameter:
+```toml
+[params]
+  mainSections = ["post", "docs"]
+```
 ## License
 
 Anatole is licensed under the [MIT license](https://github.com/lxndrblz/anatole/blob/master/LICENSE).
